@@ -32,30 +32,28 @@
 	    </div>
 	  </div>
 	</nav>
-	<div class="container">
-
-	    <form action="/create" method="post">
-		  <div class="mb-3">
-		    <label for="userId" class="form-label">사용자 아이디</label>
-	    	<input type="text" class="form-control" name="userId" aria-describedby="emailHelp" placeholder="userId">
-		    
-		  </div>
-		  <div class="mb-3">
-		    <label for="exampleInputPassword1" class="form-label">Password</label>
-		    <input type="password" class="form-control" name="password" placeholder="passowrd">
-		  </div>
-		  <div class="mb-3">
-		    <label for="name" class="form-label">이름</label>
-		    <input type="text" class="form-control" name="name" placeholder="이름">
-		  </div>
-		  <div class="mb-3">
-		    <label for="name" class="form-label">이메일</label>
-		    <input type="text" class="form-control" name="email" placeholder="이메일">
-		  </div>
-		  
-		  <button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-	</div>
+    <div class="container">
+		<table class="table table-condensed">
+			<caption>사용자 목록</caption>
+			<thead>
+				<tr>
+					<th>사용자 아이디</th>
+					<th>이름</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>	
+				{{#users}}
+				<tr>
+					<th scope="row">{{userId}}</th>
+					<td>{{name}}</td>
+					<td>{{email}}</td>
+				</tr>
+				{{/users}}
+			</tbody>
+			
+		</table>    
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
