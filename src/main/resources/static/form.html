@@ -21,10 +21,7 @@
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
-	        	<a class="nav-link" href="/form.html">회원가입</a>
-	        </li>
-	        <li class="nav-item">
-	        	<a class="nav-link" href="/list">사용자 목록</a>  
+	          <a class="nav-link" href="/form.html">회원가입</a>
 	        </li>
 	        
 	      </ul>
@@ -33,28 +30,24 @@
 	  </div>
 	</nav>
 	<div class="container">
-
-	    <form action="/create" method="post">
-		  <div class="mb-3">
-		    <label for="userId" class="form-label">사용자 아이디</label>
-	    	<input type="text" class="form-control" name="userId" aria-describedby="emailHelp" placeholder="userId">
-		    
-		  </div>
-		  <div class="mb-3">
-		    <label for="exampleInputPassword1" class="form-label">Password</label>
-		    <input type="password" class="form-control" name="password" placeholder="passowrd">
-		  </div>
-		  <div class="mb-3">
-		    <label for="name" class="form-label">이름</label>
-		    <input type="text" class="form-control" name="name" placeholder="이름">
-		  </div>
-		  <div class="mb-3">
-		    <label for="name" class="form-label">이메일</label>
-		    <input type="text" class="form-control" name="email" placeholder="이메일">
-		  </div>
-		  
-		  <button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+    <h1>회원가입</h1>
+    <form>
+	  <div class="mb-3">
+	    <label for="userId" class="form-label">사용자 아이디</label>
+	    <input type="text" class="form-control" id="userId" aria-describedby="emailHelp" placeholder="userId">
+	    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+	  </div>
+	  <div class="mb-3">
+	    <label for="exampleInputPassword1" class="form-label">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="passowrd">
+	  </div>
+	  <div class="mb-3">
+	    <label for="name" class="form-label">이름</label>
+	    <input type="text" class="form-control" id="name" placeholder="이름">
+	  </div>
+	  
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
 	</div>
 
     <!-- Optional JavaScript; choose one of the two! -->
