@@ -16,12 +16,12 @@ public class UserController {
 	public String create(User user) {
 		System.out.println("user: " + user);
 		users.add(user);
-		return "redirect:/list";
+		return "redirect:/userList";
 	}
 	
 	@GetMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("users", users);
-		return "list";
+		return "userList";
 	}
 }
