@@ -1,7 +1,6 @@
 package net.slipp.web;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,7 @@ import net.slipp.domain.User;
 import net.slipp.domain.UserRepository;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("users")
 public class UserController {
 	
 	@Autowired
