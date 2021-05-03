@@ -74,6 +74,13 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
+		
+		return "redirect:/";
+	}
+	
 	@PutMapping("/{id}")
 	public String update(@PathVariable Long id, User newUser) {
 		User user = userRepository.findById(id).get();
