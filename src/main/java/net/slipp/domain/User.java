@@ -25,6 +25,12 @@ public class User {
 	public Long getId() {
 		return id;
 	}
+	
+	public boolean matchId(Long newId) {
+		
+		return newId.equals(id);
+	}
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -43,6 +49,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public boolean matchPassword(String newPassword) {
+		
+		return newPassword.equals(password);
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

@@ -45,13 +45,11 @@ public class UserController {
 	@GetMapping("/{id}/form")
 	public String updateForm(@PathVariable Long id, Model model, HttpSession session) {
 		
-		Object tempUser = session.getAttribute("sessionedUser");
-		
-		if(tempUser == null) {
+		if(HttpSessionUtils.isLoginUser(session)) {
 			return "redirect:/users/login";	
 		}
 		
-		User sessionedUser = (User) tempUser;
+		User sessionedUser = HttpSessionUtils.getUserFromSession(session);
 		if(id != sessionedUser.getId()) {
 			throw new IllegalStateException("자신의 정보만 수정할 수 있습니다.");
 		}
@@ -60,6 +58,26 @@ public class UserController {
 		
 		model.addAttribute("user", user);
 		return "user/updateForm";
+	}
+	
+	@PutMapping("/{id}")
+	public String update(@PathVariable Long id, User newUser, HttpSession session) {
+		
+		if(HttpSessionUtils.isLoginUser(session)) {
+			return "redirect:/users/login";	
+		}
+		
+		User sessionedUser = HttpSessionUtils.getUserFromSession(session);
+		if(id != sessionedUser.getId()) {
+			throw new IllegalStateException("자신의 정보만 수정할 수 있습니다.");
+		}
+		
+		
+		User user = userRepository.findById(id).get();
+		user.update(newUser);
+		userRepository.save(user);
+		
+		return "redirect:/users";
 	}
 	
 	
@@ -76,45 +94,24 @@ public class UserController {
 			return "redirect:/users/login";
 		}
 		
-		if(!password.equals(user.getPassword())) {
+		if(!user.matchPassword(password)) {
 			System.out.println("Login Failure!");
 			return "redirect:/users/login";
 		}			
 		System.out.println("Login Success!");
-		session.setAttribute("sessionedUser", user);
-		
+		session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, user);
 		
 		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("sessionedUser");
+		session.removeAttribute(HttpSessionUtils.USER_SESSION_KEY);
 		
 		return "redirect:/";
 	}
 	
-	@PutMapping("/{id}")
-	public String update(@PathVariable Long id, User newUser, HttpSession session) {
-		
-		Object tempUser = session.getAttribute("sessionedUser");
-		
-		if(tempUser == null) {
-			return "redirect:/users/login";	
-		}
-		
-		User sessionedUser = (User) tempUser;
-		if(id != sessionedUser.getId()) {
-			throw new IllegalStateException("자신의 정보만 수정할 수 있습니다.");
-		}
-		
-		
-		User user = userRepository.findById(id).get();
-		user.update(newUser);
-		userRepository.save(user);
-		
-		return "redirect:/users";
-	}
+
 	
 	
 }
