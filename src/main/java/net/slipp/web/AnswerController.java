@@ -17,7 +17,7 @@ import net.slipp.domain.QuestionRepository;
 import net.slipp.domain.User;
 
 @Controller
-@RequestMapping("/questions/{questionId}/answers")
+@RequestMapping("questions/{questionId}/answers")
 public class AnswerController {
 	
 	@Autowired
