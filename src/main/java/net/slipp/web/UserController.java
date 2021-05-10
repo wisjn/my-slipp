@@ -17,7 +17,7 @@ import net.slipp.domain.User;
 import net.slipp.domain.UserRepository;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 	
 	@Autowired

@@ -18,7 +18,7 @@ import net.slipp.domain.Result;
 import net.slipp.domain.User;
 
 @Controller
-@RequestMapping("questions")
+@RequestMapping("/questions")
 public class QuestionController {
 	
 	@Autowired
