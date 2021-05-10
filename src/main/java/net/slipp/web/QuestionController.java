@@ -66,7 +66,7 @@ public class QuestionController {
 		Result result = valid(session, question);
 		if(!result.isValid()) {
 			model.addAttribute("errorMessage", result.getErrorMessage());
-			return "/user/login";
+			return "user/login";
 		}
 
 		model.addAttribute("question", question);
@@ -96,7 +96,7 @@ public class QuestionController {
 		Result result = valid(session, question);
 		if(!result.isValid()) {
 			model.addAttribute("errorMessage", result.getErrorMessage());
-			return "/user/login";
+			return "user/login";
 		}
 		
 		question.update(newQuestion);
@@ -112,7 +112,7 @@ public class QuestionController {
 		Result result = valid(session, question);
 		if(!result.isValid()) {
 			model.addAttribute("errorMessage", result.getErrorMessage());
-			return "/user/login";
+			return "user/login";
 		}
 		
 		questionRepository.delete(question);
