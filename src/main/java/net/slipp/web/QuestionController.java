@@ -71,7 +71,7 @@ public class QuestionController {
 
 		model.addAttribute("question", question);
 		return "qna/updateForm";
-		
+
 	}
 	
 	private Result valid(HttpSession session, Question question) {
@@ -82,7 +82,7 @@ public class QuestionController {
 		User loginUser = HttpSessionUtils.getUserFromSession(session);
 		
 		if(!question.isSameWriter(loginUser)) {
-			throw new IllegalStateException("자신의 게시글만 수정할 수 있습니다.");
+			return Result.fail("자신이 쓴 글만 수정, 삭제가 가능합니다.");
 		}
 		
 		return Result.ok();
